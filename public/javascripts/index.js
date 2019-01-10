@@ -53,4 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3: "searchPlayers"  You can search by player's name
     // 4: "updatePlayers" idk 
     // 5: "updateTeams" idk 
+
+    
 })

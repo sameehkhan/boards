@@ -16,8 +16,15 @@ In Boards, users will be able to:
 - [x] Start, pause, and restart the visualization
 
 ### Wireframes
+The app will map out various statistical values for respective players, teams, and combinations of the two.
 
 The app will consist of a single screen with the visualizations, and filters. The upper right will have icons linking to my GitHub and LinkedIn profile.
+
+
+![Wireframe](./screenshots/stats1.png)
+
+![Wireframe](./screenshots/stats2.png)
+
 
 ### Data and API
 
