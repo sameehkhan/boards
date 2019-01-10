@@ -2,7 +2,9 @@
 
 
 ### Background and Overview
-`Boards` is a data visualization application for NBA stats. These stats can often be difficult to parse, but boards is an elegant display of your favorite teams and players' stats.
+`Boards` is a data visualization application for NBA statisticss. These stats can often be difficult to parse, but boards is an elegant display of your favorite teams and players' stats. 
+
+Reading numbers off of a screen hardly shows the differentiation between one player to the next. Data visualization can create a more simple, yet just as robust way of analyzing NBA statistics.  
 
 
 ### Functionality & MVP
@@ -19,8 +21,9 @@ The app will consist of a single screen with the visualizations, and filters. Th
 
 ### Data and API
 
+The app will consist of a single screen with the settings, filter controls, and stats on top. The upper right will have icons linking to my GitHub and LinkedIn profile. 
 
-The app will consist of a single screen with the settings, playback controls, and stats on top. The upper right will have icons linking to my GitHub and LinkedIn profile.
+The API the app will be utilizing comes from NBA.com, the official NBA website, and their stats API through a library. The library is necessary for live statistical updates.
 
 
 ### Architectures and Technologies
@@ -28,8 +31,7 @@ The app will consist of a single screen with the settings, playback controls, an
 This project will be implemented with the following technologies:
 
 - Vanilla JavaScript for overall structure and logic,
-- `HTML5 Canvas` for DOM manipulation and rendering,
-- `D3` for data visualization
+- `D3.js` for data visualization
 
 
 ### Implementation Timeline
