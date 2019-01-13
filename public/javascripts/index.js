@@ -36,6 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
             .attr("height", "80%")
             .attr("width", "80%");
 
+        var yScale = d3.scaleLinear()
+            .domain([0, d3.max(pstats)])
+            .range([svgHeight, 0]);
+
 
         var barChart = svg.selectAll("rect")
             .data(pstats)
@@ -64,9 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
         //         .attr("y", function (d, i) { return 400 - (d * 10) });
     
 
-        // var yScale = d3.scaleLinear()
-        //     .domain([0,d3.max(pstats)])
-        //     .range([svgHeight, 0]);
 
 
         // var y_axis = d3.axisLeft().scale(yScale);
