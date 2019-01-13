@@ -14,19 +14,42 @@ document.addEventListener('DOMContentLoaded', () => {
     // let lebron = NBA.playerIdFromName('Lebron James');
     // NBA.stats.playerInfo({ PlayerID: lebron }).then(console.log);
 
-    let stats; 
     let playerStats = [];
+
+    var svg = d3.select("#chart-area")
+        .append("svg")
+            .attr("width", "400")
+            .attr("height", "400")
 
     NBA.stats.playerStats().then( res => { 
         let stats = res.leagueDashPlayerStats;
         console.log(stats);
-        // stats.forEach( player => {
-        //     if( player.pts > 20){
-        //     playerStats.push(player.pts)
-        //     }
-        // });
+        stats.forEach( d => {
+            if (d.pts > 20){
+                d.pts = d.pts;
+            }
+        });
 
-        let pstats = playerStats.sort().reverse().slice(0,15);
+        var y = d3.scaleLinear()
+            .domain([0, 40])
+            .range([0, 1000])
+        
+        var rects = svg.selectAll("rect")
+            .data(stats)
+            .enter()
+            .append("rect")
+            .attr("y", 20)
+            .attr("x", function(d, i){
+                return (i * 60);
+            })
+            .attr("width", 40)
+            .attr("height", function(d){
+                return y(d.pts);
+            })
+            .attr("fill", function(d) {
+                return "grey";
+            })
+        // let pstats = playerStats.sort().reverse().slice(0,15);
 
 
 
