@@ -51,7 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // yScale
     var y = d3.scaleLinear()
         .range([height, 0]);
-        
+     
+    // x label
     g.append("text")
         .attr("class", "x-axis-label")
         .attr("x", width / 2)
@@ -59,8 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
         .attr("font-size", "20px")
         .attr("text-anchor", "middle")
         .text("NBA's Top Scorers");
-                     
-    g.append("text")
+     
+    // y label
+    var yLabel = g.append("text")
         .attr("class", "y-axis-label")
         .attr("x", - (height /2))
         .attr("y", -60)
@@ -77,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         d3.interval(function(){
             update(stats);
-            flag = !flag
+            flag = !flag;
         }, 1000);
 
         update(stats);
@@ -90,15 +92,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function update(stats){
+
+        var value = flag ? "pts" : "ast";
+
         // domain for xScale
         x.domain(stats.map(function (d) {
-            if (d.pts > 20) {
+            if (d.pts > 20 && d.ast > 1) {
                 return d.playerName;
             }
         }));
 
         y.domain([0, d3.max(stats, function (d) {
-            return d.pts;
+            return d[value];
         })]);
 
         // xAxis
@@ -130,26 +135,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // UPDATE old elements present in new data
         rects
-            .attr("y", function(d){return y(d.ast); })
+            .attr("y", function(d){return y(d[value]); })
             .attr("x", function(d){return y(d.playerName); })
-            .attr("height", function(d) { return height - y(d.revenue);})
+            .attr("height", function(d) { return height - y(d[value]);})
             .attr("width", x.bandwidth);
 
 
         // ENTER
         rects.enter()
             .append("rect")
-            .attr("y", function (d) { return y(d.pts); })
+            .attr("y", function (d) { return y(d[value]); })
             .attr("x", function (d) {
                 return x(d.playerName);
             })
             .attr("width", x.bandwidth)
             .attr("height", function (d) {
-                return height - y(d.pts);
+                return height - y(d[value]);
             })
             .attr("fill", function (d) {
                 return "grey";
             })
+
+
+        var label = flag ? "Points Per Game" : "Assists Per Game"
 
         console.log(rects);
 
