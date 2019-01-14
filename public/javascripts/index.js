@@ -16,16 +16,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     var margin = { left:100, right:10, top:10, bottom:100 };
 
-    var width = 600 - margin.left - margin.right;
+    var width = 700 - margin.left - margin.right;
     var height = 400 - margin.top - margin.bottom;
 
-    var svg = d3.select("#chart-area")
+    var g = d3.select("#chart-area")
         .append("svg")
             .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom);
+            .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                     .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");        
 
     NBA.stats.playerStats().then( res => { 
         let stats = res.leagueDashPlayerStats;
+
         // console.log(res)
         // let stats = []
         // res.leagueDashPlayerStats.forEach(player => {
@@ -59,15 +62,20 @@ document.addEventListener('DOMContentLoaded', () => {
         var xAxisCall = d3.axisBottom(x);
         g.append("g")
             .attr("class", "x axis")
-            .attr("transform", "translate(0," +  width + ")")
-            .call(xAxisCall);
+            .attr("transform", "translate(0," +  height + ")")
+            .call(xAxisCall)
+            .selectAll("text")
+                .attr("y", "10")
+                .attr("x", "-5")
+                .attr("text-anchor", "end")
+                .attr("transform", "rotate(-40)");
 
         var yAxisCall = d3.axisLeft(y);
         g.append("g")
             .attr("class", "y-axis")
-            .call(yAxisCall)
+            .call(yAxisCall);
 
-        var rects = svg.selectAll("rect")
+        var rects = g.selectAll("rect")
             .data(stats)
             .enter()
             .append("rect")
