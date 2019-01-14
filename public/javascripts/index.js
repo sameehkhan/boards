@@ -14,48 +14,74 @@ document.addEventListener('DOMContentLoaded', () => {
     // let lebron = NBA.playerIdFromName('Lebron James');
     // NBA.stats.playerInfo({ PlayerID: lebron }).then(console.log);
 
-    let playerStats = [];
+    var margin = { left:100, right:10, top:10, bottom:100 };
+
+    var width = 600 - margin.left - margin.right;
+    var height = 400 - margin.top - margin.bottom;
 
     var svg = d3.select("#chart-area")
         .append("svg")
-            .attr("width", "400")
-            .attr("height", "400")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom);
 
     NBA.stats.playerStats().then( res => { 
         let stats = res.leagueDashPlayerStats;
-        console.log(stats);
-        stats.forEach( d => {
-            if (d.pts > 20){
-                d.pts = d.pts;
-            }
-        });
+        // console.log(res)
+        // let stats = []
+        // res.leagueDashPlayerStats.forEach(player => {
+        //     if (player.pts > 15){
+        //         stats.push([{
+        //             "playerName" : player.playerName,
+        //             "pts" : player.pts
 
-        var y = d3.scaleLinear()
-            .domain([0, 40])
-            .range([0, 1000])
+        //         }]);
+        //     }
+        // });
+
+        console.log(stats);
+
+        var x = d3.scaleBand()
+            .domain(stats.map(function(d){
+                if ( d.pts > 20){
+                return d.playerName;
+                }
+            }))
+            .range([0, width])
+            .paddingInner(0.3)
+            .paddingOuter(0.3);
         
+        var y = d3.scaleLinear()
+            .domain([0, d3.max(stats, function(d){
+                return d.pts;
+            })])
+            .range([0, height]);
+
+        var xAxisCall = d3.axisBottom(x);
+        g.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," +  width + ")")
+            .call(xAxisCall);
+
+        var yAxisCall = d3.axisLeft(y);
+        g.append("g")
+            .attr("class", "y-axis")
+            .call(yAxisCall)
+
         var rects = svg.selectAll("rect")
             .data(stats)
             .enter()
             .append("rect")
             .attr("y", 20)
-            .attr("x", function(d, i){
-                return (i * 60);
+            .attr("x", function(d){
+                return x(d.playerName);
             })
-            .attr("width", 40)
+            .attr("width", x.bandwidth)
             .attr("height", function(d){
-                return y(d.pts);
+                return y(d.pts)
             })
             .attr("fill", function(d) {
                 return "grey";
             })
-        // let pstats = playerStats.sort().reverse().slice(0,15);
-
-
-
-
-    
-        
             
     }).catch(function(error){
         console.log(error);
