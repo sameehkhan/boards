@@ -9,7 +9,10 @@ html, body {
   stroke: black;
   stroke-width: 2;
 }
-
+.container{
+  display: flex;
+  flex-direction: column;
+}
 .bar:hover {
   fill: lightblue;
 }
@@ -19,3 +22,7 @@ html, body {
   font-family: sans-serif;
 }
 
+.x axis-label{
+  color: black;
+
+}
