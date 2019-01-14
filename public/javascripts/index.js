@@ -23,6 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
     var width = 820 - margin.left - margin.right;
     var height = 400 - margin.top - margin.bottom;
 
+    var flag = true;
+
     var g = d3.select("#chart-area")
         .append("svg")
             .attr("width", width + margin.left + margin.right)
@@ -75,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         d3.interval(function(){
             update(stats);
+            flag = !flag
         }, 1000);
 
         update(stats);
@@ -122,11 +125,18 @@ document.addEventListener('DOMContentLoaded', () => {
             .data(stats);
         
         // EXIT old elements 
+        rects.exit().remove();
 
 
         // UPDATE old elements present in new data
-        
+        rects
+            .attr("y", function(d){return y(d.ast); })
+            .attr("x", function(d){return y(d.playerName); })
+            .attr("height", function(d) { return height - y(d.revenue);})
+            .attr("width", x.bandwidth);
 
+
+        // ENTER
         rects.enter()
             .append("rect")
             .attr("y", function (d) { return y(d.pts); })
