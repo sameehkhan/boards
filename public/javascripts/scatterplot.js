@@ -1,6 +1,6 @@
 import NBA from 'nba';
 
-function barchart() {
+function scatterplot() {
     var margin = { left: 100, right: 10, top: 100, bottom: 100 };
 
     var width = 1000 - margin.left - margin.right;
@@ -57,17 +57,16 @@ function barchart() {
         .text("PTS Per Game");
 
 
-    NBA.stats.playerStats().then(res => {
-        let stats = res.leagueDashPlayerStats;
+    NBA.stats.teamStats().then(res => {
 
-        console.log(stats);
+        console.log(res);
 
         d3.interval(function () {
-            update(stats);
+            update(res);
             flag = !flag;
         }, 1250);
 
-        update(stats);
+        update(res);
 
 
 
@@ -76,18 +75,16 @@ function barchart() {
     })
 
 
-    function update(stats) {
+    function update(res) {
 
-        var value = flag ? "pts" : "ast";
+        var value = flag ? "wPctRank" : "fg3mRank";
 
         // domain for xScale
-        x.domain(stats.map(function (d) {
-            if (d.pts > 17) {
-                return d.playerName;
-            }
+        x.domain(res.map(function (d) {
+                return d.teamName;
         }));
 
-        y.domain([0, d3.max(stats, function (d) { return d[value] })]);
+        y.domain([0, d3.max(res, function (d) { return d[value]})]);
 
         // xAxis
         var xAxisCall = d3.axisBottom(x);
@@ -110,7 +107,7 @@ function barchart() {
         // JOIN new data with old elements
 
         var rects = g.selectAll("rect")
-            .data(stats);
+            .data(res);
 
         // EXIT old elements 
         rects.exit()
@@ -124,7 +121,7 @@ function barchart() {
         // UPDATE old elements present in new data
         rects.transition(t)
             .attr("y", function (d) { return y(d[value]); })
-            .attr("x", function (d) { return x(d.playerName); })
+            .attr("x", function (d) { return x(d.teamName); })
             .attr("height", function (d) { return height - y(d[value]); })
             .attr("width", x.bandwidth);
 
@@ -133,7 +130,7 @@ function barchart() {
         rects.enter()
             .append("rect")
             .attr("x", function (d) {
-                return x(d.playerName);
+                return x(d.teamName);
             })
             .attr("fill", "grey")
             .attr("width", x.bandwidth)
@@ -157,4 +154,4 @@ function barchart() {
     }
 }
 
-export default barchart;
+export default scatterplot;
