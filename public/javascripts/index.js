@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //colorbrewer.org 
 
-    // barchart();
+    barchart();
     scatterplot();
 
 

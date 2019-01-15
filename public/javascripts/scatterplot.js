@@ -44,7 +44,7 @@ function scatterplot() {
         .attr("y", -30)
         .attr("font-size", "20px")
         .attr("text-anchor", "middle")
-        .text("NBA's Top Scorers");
+        .text("3's Made vs. Win %");
 
     // y label
     var yLabel = g.append("text")
@@ -79,16 +79,12 @@ function scatterplot() {
 
         var value = flag ? "wPctRank" : "fg3mRank";
 
-        // domain for xScale
-        x.domain(res.map(function (d) {
-                return d.teamName;
-        }));
-
-        y.domain([0, d3.max(res, function (d) { return d[value]})]);
+        // domain for x and y
+        x.domain(res.map(function (d) { return d.teamName; }));
+        y.domain([0, d3.max(res, function (d) { return d[value]; })]);
 
         // xAxis
         var xAxisCall = d3.axisBottom(x);
-
         xAxisGroup.transition(t).call(xAxisCall)
             .selectAll("text")
             .attr("y", "10")
@@ -99,54 +95,37 @@ function scatterplot() {
         // yAxis
         var yAxisCall = d3.axisLeft(y)
             .ticks(5)
-            .tickFormat(function (d) {
-                return d;
-            });
-        yAxisGroup.transition(t).call(yAxisCall)
+            .tickFormat(function (d) {return d;});
+        yAxisGroup.transition(t).call(yAxisCall);
 
         // JOIN new data with old elements
 
-        var rects = g.selectAll("rect")
+        var rects = g.selectAll("circle")
             .data(res);
 
         // EXIT old elements 
         rects.exit()
             .attr("fill", "red")
             .transition(t)
-            .attr("y", y(0))
+            .attr("cy", y(0))
             .attr("height", 0)
-            .remove();
-
-
-        // UPDATE old elements present in new data
-        rects.transition(t)
-            .attr("y", function (d) { return y(d[value]); })
-            .attr("x", function (d) { return x(d.teamName); })
-            .attr("height", function (d) { return height - y(d[value]); })
-            .attr("width", x.bandwidth);
+            .remove(); 
 
 
         // ENTER
         rects.enter()
-            .append("rect")
-            .attr("x", function (d) {
-                return x(d.teamName);
-            })
+            .append("circle")
+            .attr("cx", function (d) {return x(d.teamName);})
+            .attr("cy", y(0))
             .attr("fill", "grey")
-            .attr("width", x.bandwidth)
-            .attr("y", y(0))
-            .attr("height", 0)
+            .attr("r", 5)
+
+            .merge(rects)
             .transition(t)
-            .attr("height", function (d) {
-                return height - y(d[value]);
-            })
-            .attr("y", function (d) { return y(d[value]); })
+                .attr("cx", function(d){ return x(d.teamName) + x.bandwidth() /2;})
+                .attr("cy", function (d) { return y(d[value]); });
 
-
-
-
-
-        var label = flag ? "Points Per Game" : "Assists Per Game"
+        var label = flag ? "Win Percentage" : "3's Made Per Game";
 
         yLabel.text(label);
         console.log(rects);
