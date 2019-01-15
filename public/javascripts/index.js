@@ -5,11 +5,11 @@ import scatterplot2 from './scatterplot2';
 document.addEventListener('DOMContentLoaded', () => {
     console.dir(NBA)
     // let lebron = NBA.playerIdFromName('Lebron James');
-    let kings = NBA.teamIdFromName('Sacramento Kings');
+    // let kings = NBA.teamIdFromName('Sacramento Kings');
     // console.log(lebron)
     // NBA.stats.playerInfo({ PlayerID: lebron }).then(console.log);
-    NBA.stats.teamSplits({TeamID: kings}).then(console.log);
-    NBA.stats.teamYears({TeamID: kings}).then(console.log);
+    // NBA.stats.teamSplits({TeamID: kings}).then(console.log);
+    // NBA.stats.teamYears({TeamID: kings}).then(console.log);
     //colorbrewer.org 
     barchart();
     scatterplot2();

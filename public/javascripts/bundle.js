@@ -2369,11 +2369,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 document.addEventListener('DOMContentLoaded', () => {
     console.dir(__WEBPACK_IMPORTED_MODULE_0_nba___default.a)
     // let lebron = NBA.playerIdFromName('Lebron James');
-    let kings = __WEBPACK_IMPORTED_MODULE_0_nba___default.a.teamIdFromName('Sacramento Kings');
+    // let kings = NBA.teamIdFromName('Sacramento Kings');
     // console.log(lebron)
     // NBA.stats.playerInfo({ PlayerID: lebron }).then(console.log);
-    __WEBPACK_IMPORTED_MODULE_0_nba___default.a.stats.teamSplits({TeamID: kings}).then(console.log);
-    __WEBPACK_IMPORTED_MODULE_0_nba___default.a.stats.teamYears({TeamID: kings}).then(console.log);
+    // NBA.stats.teamSplits({TeamID: kings}).then(console.log);
+    // NBA.stats.teamYears({TeamID: kings}).then(console.log);
     //colorbrewer.org 
     Object(__WEBPACK_IMPORTED_MODULE_1__barchart__["a" /* default */])();
     Object(__WEBPACK_IMPORTED_MODULE_3__scatterplot2__["a" /* default */])();
