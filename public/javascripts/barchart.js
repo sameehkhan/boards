@@ -24,7 +24,7 @@ function barchart() {
         return pts / (2 * tsa);
     }
 
-    var t = d3.transition().duration(500);
+    var t = d3.transition().duration(750);
 
     var g = d3.select("#chart-area")
         .append("svg")
@@ -130,7 +130,7 @@ function barchart() {
             "MIN": '#0C2340',	
             "NOP": '#0C2340',	
             "NYK": '#F58426',	
-            "OKC": '#007AC1',	
+            "OKC": '#EF3B24',	
             "ORL": '#0077C0',	
             "PHI": '#006BB6',	
             "PHX": '#1D1160',	
