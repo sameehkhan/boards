@@ -98,7 +98,7 @@ function barchart() {
             }
         });
 
-        console.log(stats);
+        // console.log(stats);
 
         d3.interval(function () {
             update(stats);
@@ -262,7 +262,7 @@ function barchart() {
         var label = flag ? "Points Per Game" : "True Shooting %";
 
         yLabel.text(label);
-        console.log(rects);
+        // console.log(rects);
 
     }
 }

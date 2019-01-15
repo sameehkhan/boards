@@ -62,7 +62,7 @@ function scatterplot2(){
     //        res.push([stats.fg3mRank, stats.wRank, stats.teamName])
     //    });
 
-       console.log(res);
+    //    console.log(res);
 
         //scale function
         var xScale = d3.scaleLinear()
