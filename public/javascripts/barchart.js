@@ -3,7 +3,7 @@ import NBA from 'nba';
 function barchart() {
     var margin = { left: 100, right: 10, top: 110, bottom: 120 };
 
-    var width = 1200 - margin.left - margin.right;
+    var width = 1300 - margin.left - margin.right;
     var height = 620 - margin.top - margin.bottom;
 
     // Tooltip 
@@ -19,6 +19,11 @@ function barchart() {
         return last.reverse()[0];
     }
 
+    const trueShooting = (fga, fta, pts) => {
+        let tsa = fga + ( 0.44 * fta)
+        return pts / (2 * tsa);
+    }
+
     var t = d3.transition().duration(500);
 
     var g = d3.select("#chart-area")
@@ -31,6 +36,11 @@ function barchart() {
     var tip = d3.tip().attr('class', 'd3-tip')
         .html(function (d) { 
             var text = "<strong class='tip-hover'>Name:</strong> <span class='tip-hover' style='color:red'>" +d.playerName +"</span><br>";
+            text += "<strong class='tip-hover'>PTS:</strong> <span class='tip-hover' style='color:red'>" +d.pts +"</span><br>";
+            text += "<strong class='tip-hover'>AST:</strong> <span class='tip-hover' style='color:red'>" +d.ast +"</span><br>";
+            text += "<strong class='tip-hover'>REB:</strong> <span class='tip-hover' style='color:red'>" +d.reb +"</span><br>";
+            text += "<strong class='tip-hover'>TS %:</strong> <span class='tip-hover' style='color:red'>" +trueShooting(d.fga, d.fta, d.pts).toFixed(3) +"</span><br>";
+
             return text;
          })
     g.call(tip);
@@ -133,7 +143,7 @@ function barchart() {
         }
 
 
-        var value = flag ? "pts" : "fG3M";
+        var value = flag ? 'pts' : "ts";
 
         // domain for xScale
         x.domain(stats.map(function (d) {
@@ -142,7 +152,15 @@ function barchart() {
             }
         }));
 
-        y.domain([0, d3.max(stats, function (d) { return d[value]})]);
+        y.domain([0, d3.max(stats, function (d) { 
+            if (value === 'pts'){
+                return d.pts;
+            }else{
+                return trueShooting(d.fga, d.fta, d.pts).toFixed(3)
+            }
+        
+        })]);
+        
 
         // xAxis
         var xAxisCall = d3.axisBottom(x);
@@ -179,9 +197,24 @@ function barchart() {
 
         // UPDATE old elements present in new data
         rects.transition(t)
-            .attr("y", function (d) { return y(d[value]); })
+            .attr("y", function (d) { 
+                if (value === 'pts') {
+                    return y(d.pts);
+                } else {
+                    return y(trueShooting(d.fga, d.fta, d.pts).toFixed(3))
+                }
+             })
             .attr("x", function (d) { return x(lastName(d.playerName)); })
-            .attr("height", function (d) { return height - y(d[value]); })
+            .attr("height", function (d) { 
+                if (value === 'pts') {
+                    return height - y(d.pts);
+                } else {
+                    return height - y(trueShooting(d.fga, d.fta, d.pts).toFixed(3));
+                }
+                
+                // return height - y(d[value]); 
+            
+            })
             .attr("width", x.bandwidth);
 
         
@@ -203,13 +236,20 @@ function barchart() {
             .attr("height", function (d) {
                 return height - y(d[value]);
             })
-            .attr("y", function (d) { return y(d[value]); })
+            .attr("y", function (d) {
+                if (value === 'pts') {
+                    return y(d.pts);
+                } else {
+                    return y(trueShooting(d.fga, d.fta, d.pts).toFixed(3));
+                }
+                // return y(d[value]); })
+            });
 
 
 
 
 
-        var label = flag ? "Points Per Game" : "3PM Per Game"
+        var label = flag ? "Points Per Game" : "True Shooting %";
 
         yLabel.text(label);
         console.log(rects);
