@@ -82,7 +82,7 @@ function barchart() {
 
         // domain for xScale
         x.domain(stats.map(function (d) {
-            if (d.pts > 17) {
+            if (d.pts > 19) {
                 return d.playerName;
             }
         }));

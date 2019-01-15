@@ -1,14 +1,14 @@
 import NBA from 'nba';
 import barchart from './barchart';
 import scatterplot from './scatterplot';
-import scatterplot2 from './scatterplot2';
+import linechart from './linechart';
 document.addEventListener('DOMContentLoaded', () => {
 
     //colorbrewer.org 
 
     barchart();
+    // linechart();
     scatterplot();
-    // scatterplot2();
 
 
     // console.log(Object.getOwnPropertyNames(NBA));

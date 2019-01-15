@@ -12,6 +12,8 @@ html, body {
 .container{
   display: flex;
   flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+
 }
 .bar:hover {
   fill: lightblue;
@@ -25,8 +27,4 @@ html, body {
 .x axis-label{
   color: black;
 
-}
-
-#chart-area, #chart-area2{
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
