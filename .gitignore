@@ -6,8 +6,8 @@
 ### Custom ###
 *.db
 *.sqlite
-bundle.js
-bundle.map.js
+# bundle.js
+# bundle.map.js
 .env
 
 keys_dev.js
