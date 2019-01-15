@@ -2,14 +2,13 @@ import NBA from 'nba';
 
 function scatterplot2(){
 //width and height
-    var margin = { left: 80, right: 10, top: 100, bottom: 120 };
+    var margin = { left: 80, right: 10, top: 70, bottom: 140 };
 
-    var h = 800 - margin.top - margin.bottom;
-    var w = 1240 - margin.left - margin.right;
+    var h = 830 - margin.top - margin.bottom;
+    var w = 1040 - margin.left - margin.right;
 
     var padding = 40;
 
-    var res = [];
 
     var teamColors = {
         "Golden State Warriors": 'https://a.espncdn.com/i/teamlogos/nba/500/gs.png',
@@ -118,6 +117,7 @@ function scatterplot2(){
             .data(res)
             .enter()
             .append("image")
+
             .attr("x", function (d) {
                 return xScale(d.fg3mRank);
             })
@@ -130,8 +130,9 @@ function scatterplot2(){
             .attr("xlink:href", function (d) {
                 return teamColors[d.teamName];
             })
-            .attr("width", 40)
-            .attr("height", 40);
+            .attr("width", 50)
+            .attr("height", 50)
+            .attr("class","nba-scatter")
 
 
 

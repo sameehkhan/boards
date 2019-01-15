@@ -9,8 +9,8 @@ function barchart() {
 
     var margin = { left: 100, right: 10, top: 120, bottom: 90 };
 
-    var width = 1200 - margin.left - margin.right;
-    var height = 620 - margin.top - margin.bottom;
+    var width = 1250 - margin.left - margin.right;
+    var height = 580 - margin.top - margin.bottom;
 
     // Tooltip 
 
@@ -41,7 +41,7 @@ function barchart() {
 
     var tip = d3.tip().attr('class', 'd3-tip')
         .html(function (d) { 
-            var text = "<strong class='tip-hover'>Name:</strong> <span class='tip-hover' style='color:red'>" +d.playerName +"</span><br>";
+            var text = "<strong class='tip-hover'>Player:</strong> <span class='tip-hover' style='color:red'>" +d.playerName +"</span><br>";
             text += "<strong class='tip-hover'>PTS:</strong> <span class='tip-hover' style='color:red'>" +d.pts +"</span><br>";
             text += "<strong class='tip-hover'>AST:</strong> <span class='tip-hover' style='color:red'>" +d.ast +"</span><br>";
             text += "<strong class='tip-hover'>REB:</strong> <span class='tip-hover' style='color:red'>" +d.reb +"</span><br>";
@@ -64,8 +64,8 @@ function barchart() {
     // xScale
     var x = d3.scaleBand()
         .range([0, width])
-        .paddingInner(0.1)
-        .paddingOuter(0.2);
+        .paddingInner(0.2)
+        .paddingOuter(0.1);
 
     // yScale
     var y = d3.scaleLinear()
@@ -88,7 +88,7 @@ function barchart() {
         .attr("font-size", "20px")
         .attr("text-anchor", "middle")
         .attr("transform", "rotate(-90)")
-        .text("PTS Per Game");
+        .text("Points Per Game");
 
 
     NBA.stats.playerStats().then(res => {
@@ -222,7 +222,8 @@ function barchart() {
                 // return height - y(d[value]); 
             
             })
-            .attr("width", x.bandwidth);
+            .attr("width", x.bandwidth)
+            .attr("class", "nba-bars")
 
         
         // ENTER
@@ -250,7 +251,9 @@ function barchart() {
                     return y(trueShooting(d.fga, d.fta, d.pts).toFixed(3));
                 }
                 // return y(d[value]); })
-            });
+            })
+            .attr("class", "nba-bars");
+
 
 
 

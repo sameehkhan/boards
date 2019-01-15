@@ -49,6 +49,8 @@ html, body {
 /* tooltip */
 .tip-hover{
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    /* background: grey; */
+
 }
 .d3-tip {
   line-height: 1;
@@ -105,3 +107,29 @@ html, body {
   top: 50%;
   left: 100%;
 }
+
+/* .nba-scatter,{
+  -webkit-transform: perspective(0px) translateZ(0);
+  transform: perspective(0px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+} */
+
+.nba-scatter:hover {
+  transition-duration: 0.5s;
+  height: 60px;
+  width: 60px;
+} 
+
+.nba-bars:hover{
+  /* width: 30px; */
+  background-color:#FF0000;
+}
+
+.nba-bars:active{
+  /* background: grey; */
+}
+
