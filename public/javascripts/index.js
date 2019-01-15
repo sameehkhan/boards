@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //colorbrewer.org 
     barchart();
     scatterplot2();
-    scatterplot();
+    // scatterplot();
 
 
     // console.log(Object.getOwnPropertyNames(NBA));

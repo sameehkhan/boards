@@ -30,7 +30,7 @@ function barchart() {
         return pts / (2 * tsa);
     }
 
-    var t = d3.transition().duration(750);
+    var t = d3.transition().duration(1000);
 
     var g = d3.select("#chart-area")
         .append("svg")
@@ -103,7 +103,7 @@ function barchart() {
         d3.interval(function () {
             update(stats);
             flag = !flag;
-        }, 1250);
+        }, 2500);
 
         update(stats);
 
