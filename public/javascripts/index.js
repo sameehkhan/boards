@@ -1,13 +1,13 @@
 import NBA from 'nba';
 import barchart from './barchart';
 import scatterplot from './scatterplot';
-import linechart from './linechart';
+import scatterplot2 from './scatterplot2';
 document.addEventListener('DOMContentLoaded', () => {
 
     //colorbrewer.org 
 
     barchart();
-    // linechart();
+    scatterplot2();
     scatterplot();
 
 

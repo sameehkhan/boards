@@ -80,8 +80,8 @@ function scatterplot() {
         var value = flag ? "wPctRank" : "fg3mRank";
 
         // domain for x and y
-        x.domain([0, d3.max(res, function (d) { return d.fg3mRank; })]);
-        y.domain([0, d3.max(res, function (d) { return d.wPctRank; })]);
+        x.domain(res.map(function (d) { return d.teamName; }));
+        y.domain([0, d3.max(res, function (d) { return d[value]; })]);
 
         // xAxis
         var xAxisCall = d3.axisBottom(x);
@@ -122,8 +122,8 @@ function scatterplot() {
 
             .merge(rects)
             .transition(t)
-                .attr("cx", function(d){ return x(d.fg3mRank) + x.bandwidth() /2;})
-                .attr("cy", function (d) { return y(d.wRank); });
+                .attr("cx", function(d){ return x(d.teamName) + x.bandwidth() /2;})
+                .attr("cy", function (d) { return y(d[value]); });
 
         var label = flag ? "Win Percentage" : "3's Made Per Game";
 
