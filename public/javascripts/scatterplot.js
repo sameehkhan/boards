@@ -1,6 +1,7 @@
 import NBA from 'nba';
 
 function scatterplot() {
+    
     var margin = { left: 100, right: 10, top: 100, bottom: 100 };
 
     var width = 1000 - margin.left - margin.right;
@@ -118,7 +119,7 @@ function scatterplot() {
             .attr("cx", function (d) {return x(d.teamName);})
             .attr("cy", y(0))
             .attr("fill", "grey")
-            .attr("r", 5)
+            .attr("r", 10)
 
             .merge(rects)
             .transition(t)

@@ -1,7 +1,8 @@
 import NBA from 'nba';
 
 function barchart() {
-    var margin = { left: 100, right: 10, top: 110, bottom: 120 };
+    console.dir(NBA.stats.leagueGameLog[3])
+    var margin = { left: 100, right: 10, top: 120, bottom: 90 };
 
     var width = 1300 - margin.left - margin.right;
     var height = 620 - margin.top - margin.bottom;
@@ -40,6 +41,7 @@ function barchart() {
             text += "<strong class='tip-hover'>AST:</strong> <span class='tip-hover' style='color:red'>" +d.ast +"</span><br>";
             text += "<strong class='tip-hover'>REB:</strong> <span class='tip-hover' style='color:red'>" +d.reb +"</span><br>";
             text += "<strong class='tip-hover'>TS %:</strong> <span class='tip-hover' style='color:red'>" +trueShooting(d.fga, d.fta, d.pts).toFixed(3) +"</span><br>";
+            text += "<strong class='tip-hover'>TEAM:</strong> <span class='tip-hover' style='color:red'>" + d.teamAbbreviation + "</span><br>";
 
             return text;
          })
