@@ -10,7 +10,7 @@ function scatterplot() {
 
     var t = d3.transition().duration(500);
 
-    var g = d3.select("#chart-area")
+    var g = d3.select("#chart-area2")
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)

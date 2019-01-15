@@ -26,3 +26,7 @@ html, body {
   color: black;
 
 }
+
+#chart-area, #chart-area2{
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
