@@ -12,6 +12,10 @@ function barchart() {
 
     const lastName = (name) => {
         let last = name.split(" ")
+        if (last.length > 2){
+            last.shift();
+            return last.join(" ");
+        }
         return last.reverse()[0];
     }
 
