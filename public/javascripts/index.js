@@ -5,7 +5,7 @@ import scatterplot2 from './scatterplot2';
 document.addEventListener('DOMContentLoaded', () => {
 
     //colorbrewer.org 
-
+    console.dir()
     barchart();
     scatterplot2();
     scatterplot();
