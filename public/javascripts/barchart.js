@@ -1,10 +1,15 @@
 import NBA from 'nba';
 
 function barchart() {
-    console.dir(NBA.stats.leagueGameLog[3])
+    // NBA.findBy("Lebron James")
+    // console.dir(NBA);
+    // let lebron = NBA.playerIdFromName('Lebron James');
+    // // console.log(lebron)
+    // NBA.stats.playerInfo({ PlayerID: lebron }).then(console.log);
+
     var margin = { left: 100, right: 10, top: 120, bottom: 90 };
 
-    var width = 1300 - margin.left - margin.right;
+    var width = 1200 - margin.left - margin.right;
     var height = 620 - margin.top - margin.bottom;
 
     // Tooltip 

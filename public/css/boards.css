@@ -12,6 +12,8 @@ html, body {
 .container{
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-content: center;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 
 }
@@ -29,6 +31,19 @@ html, body {
 
 }
 
+.row{
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+#chart-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 
 /* tooltip */

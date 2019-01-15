@@ -3,9 +3,14 @@ import barchart from './barchart';
 import scatterplot from './scatterplot';
 import scatterplot2 from './scatterplot2';
 document.addEventListener('DOMContentLoaded', () => {
-
+    console.dir(NBA)
+    // let lebron = NBA.playerIdFromName('Lebron James');
+    let kings = NBA.teamIdFromName('Sacramento Kings');
+    // console.log(lebron)
+    // NBA.stats.playerInfo({ PlayerID: lebron }).then(console.log);
+    NBA.stats.teamSplits({TeamID: kings}).then(console.log);
+    NBA.stats.teamYears({TeamID: kings}).then(console.log);
     //colorbrewer.org 
-    console.dir()
     barchart();
     scatterplot2();
     scatterplot();
@@ -37,9 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // NBA.stats.teamStats().then(console.log) // doesn't work
     // NBA.stats.playerStats().then(console.log) // doesn't work
 
-    console.dir(NBA.stats.teamStats())
-    console.dir(NBA)
-    console.dir(NBA.sportVu)
+    // console.dir(NBA.stats.teamStats())
+    // console.dir(NBA)
+    // console.dir(NBA.sportVu)
 
     // NBA.sportVu.touches().then(console.log)
 })  
