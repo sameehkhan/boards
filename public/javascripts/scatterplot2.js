@@ -45,14 +45,14 @@ function scatterplot2(){
     
     var tip = d3.tip().attr('class', 'd3-tip')
         .html(function (d) {
-            var text = "<strong class='tip-hover'>Name:</strong> <span class='tip-hover' style='color:red'>" + d.teamName + "</span><br>";
-            text += "<strong class='tip-hover'>Record:</strong> <span class='tip-hover' style='color:red'>" + d.w + '-' + d.l + "</span><br>";
-            text += "<strong class='tip-hover'>FG%:</strong> <span class='tip-hover' style='color:red'>" + d.fgPct + "</span><br>";
-            text += "<strong class='tip-hover'>3PM:</strong> <span class='tip-hover' style='color:red'>" + d.fG3M + "</span><br>";
-            // text += "<strong class='tip-hover'>AST:</strong> <span class='tip-hover' style='color:red'>" + d.ast + "</span><br>";
-            // text += "<strong class='tip-hover'>REB:</strong> <span class='tip-hover' style='color:red'>" + d.reb + "</span><br>";
-            // text += "<strong class='tip-hover'>TS %:</strong> <span class='tip-hover' style='color:red'>" + trueShooting(d.fga, d.fta, d.pts).toFixed(3) + "</span><br>";
-            // text += "<strong class='tip-hover'>TEAM:</strong> <span class='tip-hover' style='color:red'>" + d.teamAbbreviation + "</span><br>";
+            var text = "<strong class='tip-hover'>TEAM:</strong> <span class='tip-hover' style='color:#FF4D4D'>" + d.teamName + "</span><br>";
+            text += "<strong class='tip-hover'>RECORD:</strong> <span class='tip-hover' style='color:#FF4D4D'>" + d.w + '-' + d.l + "</span><br>";
+            text += "<strong class='tip-hover'>FG%:</strong> <span class='tip-hover' style='color:#FF4D4D'>" + d.fgPct + "</span><br>";
+            text += "<strong class='tip-hover'>3PM:</strong> <span class='tip-hover' style='color:#FF4D4D'>" + d.fG3M + "</span><br>";
+            // text += "<strong class='tip-hover'>AST:</strong> <span class='tip-hover' style='color:#FF4D4D'>" + d.ast + "</span><br>";
+            // text += "<strong class='tip-hover'>REB:</strong> <span class='tip-hover' style='color:#FF4D4D'>" + d.reb + "</span><br>";
+            // text += "<strong class='tip-hover'>TS %:</strong> <span class='tip-hover' style='color:#FF4D4D'>" + trueShooting(d.fga, d.fta, d.pts).toFixed(3) + "</span><br>";
+            // text += "<strong class='tip-hover'>TEAM:</strong> <span class='tip-hover' style='color:#FF4D4D'>" + d.teamAbbreviation + "</span><br>";
 
             return text;
         })

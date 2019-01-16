@@ -57,13 +57,13 @@ html, body {
 /* tooltip */
 .tip-hover{
   /* font-family: "Courier New", Courier, monospace; */
-  font-family: "Lucida Console", Monaco, monospace;	
-
+  font-family: "Trebuchet MS", Helvetica, sans-serif;	
+  font-size: 16px;
     /* background: grey; */
 
 }
 .d3-tip {
-  line-height: 1;
+  line-height: 1.0;
   font-weight: bold;
   padding: 12px;
   background: rgba(0, 0, 0, 0.8);
@@ -76,7 +76,7 @@ html, body {
 .d3-tip:after {
   box-sizing: border-box;
   display: inline;
-  font-size: 10px;
+  font-size: 12px;
   width: 100%;
   line-height: 1;
   color: rgba(0, 0, 0, 0.8);
@@ -128,12 +128,13 @@ html, body {
   transition-property: transform;
 } */
 
+
 .nba-scatter:hover {
   transition-duration: 0.5s;
-  height: 62px;
-  width: 62px;
-  z-index: -1;
-
+  /* height: 62px;
+  width: 62px; */
+  /* box-shadow: 10px 10px grey; */
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
 } 
 
 .nba-bars:hover{
