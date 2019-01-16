@@ -2,7 +2,7 @@ import NBA from 'nba';
 
 function scatterplot2(){
 //width and height
-    var margin = { left: 80, right: 10, top: 150, bottom: 110 };
+    var margin = { left: 80, right: 10, top: 150, bottom: 120 };
 
     var h = 680- margin.top - margin.bottom;
     var w = 910 - margin.left - margin.right;
@@ -46,8 +46,9 @@ function scatterplot2(){
     var tip = d3.tip().attr('class', 'd3-tip')
         .html(function (d) {
             var text = "<strong class='tip-hover'>Name:</strong> <span class='tip-hover' style='color:red'>" + d.teamName + "</span><br>";
+            text += "<strong class='tip-hover'>Record:</strong> <span class='tip-hover' style='color:red'>" + d.w + '-' + d.l + "</span><br>";
+            text += "<strong class='tip-hover'>FG%:</strong> <span class='tip-hover' style='color:red'>" + d.fgPct + "</span><br>";
             text += "<strong class='tip-hover'>3PM:</strong> <span class='tip-hover' style='color:red'>" + d.fG3M + "</span><br>";
-            text += "<strong class='tip-hover'>Win %:</strong> <span class='tip-hover' style='color:red'>" + d.wPct + "</span><br>";
             // text += "<strong class='tip-hover'>AST:</strong> <span class='tip-hover' style='color:red'>" + d.ast + "</span><br>";
             // text += "<strong class='tip-hover'>REB:</strong> <span class='tip-hover' style='color:red'>" + d.reb + "</span><br>";
             // text += "<strong class='tip-hover'>TS %:</strong> <span class='tip-hover' style='color:red'>" + trueShooting(d.fga, d.fta, d.pts).toFixed(3) + "</span><br>";
@@ -62,7 +63,7 @@ function scatterplot2(){
     //        res.push([stats.fg3mRank, stats.wRank, stats.teamName])
     //    });
 
-    //    console.log(res);
+       console.log(res);
 
     
 
@@ -91,14 +92,16 @@ function scatterplot2(){
             .attr("class", "x-axis-label")
             .attr("x", w / 2)
             .attr("y", -40)
-            .attr("font-size", "20px")
+            .attr("font-size", "40px")
             .attr("text-anchor", "middle")
-            .text("Win % vs. 3PM ");
+            .text("More 3's, more wins?")
+            .attr("class", 'title');
+
 
         var yLabel2 = svg.append("text")
             .attr("class", "x-axis-label")
             .attr("x", w / 2)
-            .attr("y", 500)
+            .attr("y", 450)
             .attr("font-size", "20px")
             .attr("text-anchor", "middle")
             .text("3PM");
@@ -141,12 +144,16 @@ function scatterplot2(){
         svg.append("g")
             .attr("class", "x-axis2")
             .attr("transform", "translate(0," + (h - padding) + ")")
-            .call(xAxis);
+            .call(xAxis)
+            .attr("stroke-width", '1.5');
+
 
         svg.append("g")
             .attr("class", "y-axis2")
             .attr("transform", "translate(" + padding +", 0)")
-            .call(yAxis);
+            .call(yAxis)
+            .attr("stroke-width", '1.5');
+
 
     });
 

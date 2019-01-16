@@ -7,10 +7,10 @@ function barchart() {
     // // console.log(lebron)
     // NBA.stats.playerInfo({ PlayerID: lebron }).then(console.log);
 
-    var margin = { left: 100, right: 10, top: 120, bottom: 90 };
+    var margin = { left: 75, right: 20, top: 180, bottom: 100 };
 
-    var width = 1150 - margin.left - margin.right;
-    var height = 580 - margin.top - margin.bottom;
+    var width = 980 - margin.left - margin.right;
+    var height = 630 - margin.top - margin.bottom;
 
     // Tooltip 
 
@@ -53,18 +53,21 @@ function barchart() {
     g.call(tip);
 
     var xAxisGroup = g.append("g")
-        .attr("class", "x axis")
+        .attr("class", "bar-domain")
         .attr("transform", "translate(0," + height + ")")
+        .attr("stroke-width", '1.5');
 
 
 
     var yAxisGroup = g.append("g")
         .attr("class", "y-axis")
+        .attr("stroke-width", '1.5');
+
 
     // xScale
     var x = d3.scaleBand()
         .range([0, width])
-        .paddingInner(0.2)
+        .paddingInner(0.15)
         .paddingOuter(0.1);
 
     // yScale
@@ -75,10 +78,11 @@ function barchart() {
     g.append("text")
         .attr("class", "x-axis-label")
         .attr("x", width / 2)
-        .attr("y", -40)
-        .attr("font-size", "20px")
+        .attr("y", -100)
+        .attr("font-size", "40px")
         .attr("text-anchor", "middle")
-        .text("League Leaders Scoring Efficiency");
+        .text("SCORING EFFICIENCY")
+        .attr("class", 'title')
 
     // y label
     var yLabel = g.append("text")
@@ -111,8 +115,7 @@ function barchart() {
 
     }).catch(function (error) {
         console.log(error);
-    })
-
+    });
 
     function update(stats) {
 
