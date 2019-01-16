@@ -69,11 +69,11 @@ function scatterplot2(){
 
 
         var xScale = d3.scaleLinear()
-            .domain([1, d3.max(res, function (d) { return d.fg3mRank; })])
-            .range([padding, w - padding * 2]);
+            .domain([1.25, d3.max(res, function (d) { return d.fg3mRank; })])
+            .range([padding, w - padding * 2 + 40]);
 
         var yScale = d3.scaleLinear()
-            .domain([0, d3.max(res, function (d) { return d.wPctRank; })])
+            .domain([-3, d3.max(res, function (d) { return d.wPctRank; })])
             .range([h-padding, padding]);
 
         var xAxis = d3.axisBottom().scale(xScale).ticks(3)
@@ -103,7 +103,7 @@ function scatterplot2(){
         var yLabel2 = svg.append("text")
             .attr("class", "axis-label")
             .attr("x", w / 2)
-            .attr("y", 630)
+            .attr("y", 560)
             .attr("font-size", "20px")
             .attr("text-anchor", "middle")
             .text("3PM");
