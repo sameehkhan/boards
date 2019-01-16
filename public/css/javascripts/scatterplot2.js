@@ -2,10 +2,10 @@ import NBA from 'nba';
 
 function scatterplot2(){
 //width and height
-    var margin = { left: 80, right: 10, top: 150, bottom: 110 };
+    var margin = { left: 80, right: 10, top: 70, bottom: 140 };
 
-    var h = 680- margin.top - margin.bottom;
-    var w = 910 - margin.left - margin.right;
+    var h = 830 - margin.top - margin.bottom;
+    var w = 1040 - margin.left - margin.right;
 
     var padding = 40;
 
@@ -64,11 +64,9 @@ function scatterplot2(){
 
     //    console.log(res);
 
-    
-
-
+        //scale function
         var xScale = d3.scaleLinear()
-            .domain([1, d3.max(res, function (d) { return d.fg3mRank; })])
+            .domain([0, d3.max(res, function (d) { return d.fg3mRank; })])
             .range([padding, w - padding * 2]);
 
         var yScale = d3.scaleLinear()
@@ -132,20 +130,20 @@ function scatterplot2(){
             .attr("xlink:href", function (d) {
                 return teamColors[d.teamName];
             })
-            .attr("width", 45)
-            .attr("height", 45)
+            .attr("width", 50)
+            .attr("height", 50)
             .attr("class","nba-scatter")
 
 
 
         svg.append("g")
-            .attr("class", "x-axis2")
+            .attr("class", "x axis")
             .attr("transform", "translate(0," + (h - padding) + ")")
             .call(xAxis);
 
         svg.append("g")
-            .attr("class", "y-axis2")
-            .attr("transform", "translate(" + padding +", 0)")
+            .attr("class", "y axis")
+            .attr("transform", "translate(" + padding + ", 0)")
             .call(yAxis);
 
     });

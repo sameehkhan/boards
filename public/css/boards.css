@@ -120,16 +120,21 @@ html, body {
 
 .nba-scatter:hover {
   transition-duration: 0.5s;
-  height: 60px;
-  width: 60px;
+  height: 52px;
+  width: 52px;
 } 
 
 .nba-bars:hover{
   /* width: 30px; */
-  background-color:#FF0000;
+  /* background-color:#FF0000; */
+  fill: grey;
+
 }
 
 .nba-bars:active{
   /* background: grey; */
 }
 
+.x-axis2{
+  /* padding-top: 0px; */
+}

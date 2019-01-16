@@ -9,7 +9,7 @@ function barchart() {
 
     var margin = { left: 100, right: 10, top: 120, bottom: 90 };
 
-    var width = 1150 - margin.left - margin.right;
+    var width = 1250 - margin.left - margin.right;
     var height = 580 - margin.top - margin.bottom;
 
     // Tooltip 
@@ -78,7 +78,7 @@ function barchart() {
         .attr("y", -40)
         .attr("font-size", "20px")
         .attr("text-anchor", "middle")
-        .text("League Leaders Scoring Efficiency");
+        .text("NBA's Top Scorers");
 
     // y label
     var yLabel = g.append("text")
