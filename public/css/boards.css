@@ -148,10 +148,10 @@ html, body {
 
 .nba-scatter:hover {
   transition-duration: 0.5s;
-  /* height: 62px;
-  width: 62px; */
+  height: 72px;
+  width: 72px;
   /* box-shadow: 10px 10px grey; */
-  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+  /* box-shadow: 0 0 11px rgba(33,33,33,.2);  */
 } 
 
 .nba-bars:hover{
@@ -190,7 +190,7 @@ html, body {
 
 /* LOGO LINKS */
 
-.git, .linkedin{
+.git, .linkedin, .nba-scatter{
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
@@ -204,6 +204,11 @@ html, body {
   -webkit-transform: scale(1.05);
   transform: scale(1.05);
 }
+
+/* .nba-scatter:hover, .nba-scatter:focus, .nba-scatter:active {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+} */
 
 .linkedin:hover, .linkedin:focus, .linkedin:active {
   -webkit-transform: scale(1.05);

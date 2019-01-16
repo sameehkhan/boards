@@ -2,10 +2,10 @@ import NBA from 'nba';
 
 function scatterplot2(){
 //width and height
-    var margin = { left: 85, right: 20, top: 140, bottom: 100 };
+    var margin = { left: 75, right: 28, top: 140, bottom: 100 };
 
     var h = 750- margin.top - margin.bottom;
-    var w = 880 - margin.left - margin.right;
+    var w = 1020 - margin.left - margin.right;
 
     var padding = 40;
 
@@ -73,7 +73,7 @@ function scatterplot2(){
             .range([padding, w - padding * 2 + 40]);
 
         var yScale = d3.scaleLinear()
-            .domain([-3, d3.max(res, function (d) { return d.wPctRank; })])
+            .domain([-4, d3.max(res, function (d) { return d.wPctRank; })])
             .range([h-padding, padding]);
 
         var xAxis = d3.axisBottom().scale(xScale).ticks(3)
@@ -137,8 +137,8 @@ function scatterplot2(){
             .attr("xlink:href", function (d) {
                 return teamColors[d.teamName];
             })
-            .attr("width", 55)
-            .attr("height", 55)
+            .attr("width", 70)
+            .attr("height", 70)
             .attr("class","nba-scatter")
 
 
