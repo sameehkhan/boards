@@ -7,7 +7,7 @@ function barchart() {
     // // console.log(lebron)
     // NBA.stats.playerInfo({ PlayerID: lebron }).then(console.log);
 
-    var margin = { left: 87, right: 20, top: 180, bottom: 110 };
+    var margin = { left: 100, right: 20, top: 180, bottom: 110 };
 
     var width = 1080 - margin.left - margin.right;
     var height = 630 - margin.top - margin.bottom;
@@ -62,7 +62,8 @@ function barchart() {
 
     var yAxisGroup = g.append("g")
         .attr("class", "y-axis")
-        .attr("stroke-width", '1');
+        .attr("stroke-width", '1')
+        .attr('class', 'bar-y');
 
 
     // xScale
@@ -89,7 +90,7 @@ function barchart() {
     var yLabel = g.append("text")
         .attr("class", "axis-label")
         .attr("x", - (height / 2))
-        .attr("y", -70)
+        .attr("y", -85)
         .attr("font-size", "20px")
         .attr("text-anchor", "middle")
         .attr("transform", "rotate(-90)")
@@ -182,15 +183,18 @@ function barchart() {
             .attr("x", "-5")
             .attr("font-size", "17px")
             .attr("text-anchor", "end")
-            .attr("transform", "rotate(-40)");
+            .attr("transform", "rotate(-40)")
+            .attr('class', 'bar-y')
 
         // yAxis
         var yAxisCall = d3.axisLeft(y)
-            .ticks(5)
+            .ticks(3)
             .tickFormat(function (d) {
                 return d;
             });
         yAxisGroup.transition(t).call(yAxisCall)
+            .attr("font-size", "17px")
+
 
         // JOIN new data with old elements
 

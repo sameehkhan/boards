@@ -2,10 +2,10 @@ import NBA from 'nba';
 
 function scatterplot2(){
 //width and height
-    var margin = { left: 85, right: 20, top: 140, bottom: 140 };
+    var margin = { left: 85, right: 20, top: 140, bottom: 100 };
 
-    var h = 680- margin.top - margin.bottom;
-    var w = 980 - margin.left - margin.right;
+    var h = 750- margin.top - margin.bottom;
+    var w = 880 - margin.left - margin.right;
 
     var padding = 40;
 
@@ -76,9 +76,11 @@ function scatterplot2(){
             .domain([0, d3.max(res, function (d) { return d.wPctRank; })])
             .range([h-padding, padding]);
 
-        var xAxis = d3.axisBottom().scale(xScale).ticks(5);
+        var xAxis = d3.axisBottom().scale(xScale).ticks(3)
 
-        var yAxis = d3.axisLeft().scale(yScale).ticks(5);
+        // xAxis.attr('font-size', "17px")
+
+        var yAxis = d3.axisLeft().scale(yScale).ticks(3);
 
         var svg = d3.select("#chart-area")
             .append("svg")
@@ -101,7 +103,7 @@ function scatterplot2(){
         var yLabel2 = svg.append("text")
             .attr("class", "axis-label")
             .attr("x", w / 2)
-            .attr("y", 450)
+            .attr("y", 630)
             .attr("font-size", "20px")
             .attr("text-anchor", "middle")
             .text("3PM");
@@ -142,16 +144,18 @@ function scatterplot2(){
 
 
         svg.append("g")
-            .attr("class", "x-axis2")
+            .attr("class", "bar-y")
             .attr("transform", "translate(0," + (h - padding) + ")")
             .call(xAxis)
+            .attr('font-size', '17px')
             .attr("stroke-width", '1');
 
 
         svg.append("g")
-            .attr("class", "y-axis2")
+            .attr("class", "bar-y")
             .attr("transform", "translate(" + padding +", 0)")
             .call(yAxis)
+            .attr('font-size', '17px')
             .attr("stroke-width", '1');
 
 
