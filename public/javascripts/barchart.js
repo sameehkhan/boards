@@ -7,9 +7,9 @@ function barchart() {
     // // console.log(lebron)
     // NBA.stats.playerInfo({ PlayerID: lebron }).then(console.log);
 
-    var margin = { left: 75, right: 20, top: 180, bottom: 100 };
+    var margin = { left: 85, right: 20, top: 180, bottom: 110 };
 
-    var width = 980 - margin.left - margin.right;
+    var width = 1080 - margin.left - margin.right;
     var height = 630 - margin.top - margin.bottom;
 
     // Tooltip 
@@ -55,6 +55,7 @@ function barchart() {
     var xAxisGroup = g.append("g")
         .attr("class", "bar-domain")
         .attr("transform", "translate(0," + height + ")")
+        .attr('font-size', '20px')
         .attr("stroke-width", '1.5');
 
 
@@ -86,9 +87,9 @@ function barchart() {
 
     // y label
     var yLabel = g.append("text")
-        .attr("class", "y-axis-label")
+        .attr("class", "axis-label")
         .attr("x", - (height / 2))
-        .attr("y", -60)
+        .attr("y", -70)
         .attr("font-size", "20px")
         .attr("text-anchor", "middle")
         .attr("transform", "rotate(-90)")
@@ -179,7 +180,7 @@ function barchart() {
             .selectAll("text")
             .attr("y", "10")
             .attr("x", "-5")
-            .attr("font-size", "15px")
+            .attr("font-size", "17px")
             .attr("text-anchor", "end")
             .attr("transform", "rotate(-40)");
 

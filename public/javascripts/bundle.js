@@ -253,13 +253,6 @@ module.exports = isArray;
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(17);
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
 const url = __webpack_require__(41);
 const template = __webpack_require__(13);
 
@@ -319,6 +312,13 @@ function createGetJsonp () {
 
 module.exports = typeof window === "undefined" ?
   createGetJson() : createGetJsonp();
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(17);
 
 
 /***/ }),
@@ -2060,7 +2060,7 @@ function makeStatsClient (transport) {
   return client;
 }
 
-module.exports = makeStatsClient(__webpack_require__(2));
+module.exports = makeStatsClient(__webpack_require__(1));
 
 
 /***/ }),
@@ -2357,7 +2357,7 @@ module.exports = { base, general, players, lineups, sportVu };
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_nba__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_nba__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_nba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_nba__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__barchart__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__scatterplot__ = __webpack_require__(66);
@@ -6433,7 +6433,7 @@ module.exports = restParam;
 const {interpolate} = __webpack_require__(5);
 const {general} = __webpack_require__(15);
 const endpoints = __webpack_require__(59);
-const getJson = __webpack_require__(2);
+const getJson = __webpack_require__(1);
 
 function getTransform () { return general; }
 
@@ -6601,7 +6601,7 @@ function makeSynergyClient (transport) {
   return client;
 }
 
-module.exports = makeSynergyClient(__webpack_require__(2));
+module.exports = makeSynergyClient(__webpack_require__(1));
 
 
 /***/ }),
@@ -6610,7 +6610,7 @@ module.exports = makeSynergyClient(__webpack_require__(2));
 
 // this includes endpoints at data.nba.com
 
-const getJson = __webpack_require__(2);
+const getJson = __webpack_require__(1);
 const { interpolate } = __webpack_require__(5);
 
 const scoreboardURL = interpolate("http://data.nba.com/data/5s/json/cms/noseason/scoreboard/__date__/games.json");
@@ -6683,7 +6683,7 @@ module.exports = [{"firstName":"Alex","lastName":"Abrines","playerId":203518,"te
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_nba__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_nba__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_nba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_nba__);
 
 
@@ -6694,9 +6694,9 @@ function barchart() {
     // // console.log(lebron)
     // NBA.stats.playerInfo({ PlayerID: lebron }).then(console.log);
 
-    var margin = { left: 75, right: 20, top: 180, bottom: 100 };
+    var margin = { left: 85, right: 20, top: 180, bottom: 110 };
 
-    var width = 980 - margin.left - margin.right;
+    var width = 1080 - margin.left - margin.right;
     var height = 630 - margin.top - margin.bottom;
 
     // Tooltip 
@@ -6742,6 +6742,7 @@ function barchart() {
     var xAxisGroup = g.append("g")
         .attr("class", "bar-domain")
         .attr("transform", "translate(0," + height + ")")
+        .attr('font-size', '20px')
         .attr("stroke-width", '1.5');
 
 
@@ -6773,9 +6774,9 @@ function barchart() {
 
     // y label
     var yLabel = g.append("text")
-        .attr("class", "y-axis-label")
+        .attr("class", "axis-label")
         .attr("x", - (height / 2))
-        .attr("y", -60)
+        .attr("y", -70)
         .attr("font-size", "20px")
         .attr("text-anchor", "middle")
         .attr("transform", "rotate(-90)")
@@ -6866,7 +6867,7 @@ function barchart() {
             .selectAll("text")
             .attr("y", "10")
             .attr("x", "-5")
-            .attr("font-size", "15px")
+            .attr("font-size", "17px")
             .attr("text-anchor", "end")
             .attr("transform", "rotate(-40)");
 
@@ -7106,16 +7107,16 @@ function barchart() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_nba__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_nba__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_nba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_nba__);
 
 
 function scatterplot2(){
 //width and height
-    var margin = { left: 80, right: 10, top: 150, bottom: 120 };
+    var margin = { left: 85, right: 20, top: 140, bottom: 140 };
 
     var h = 680- margin.top - margin.bottom;
-    var w = 910 - margin.left - margin.right;
+    var w = 980 - margin.left - margin.right;
 
     var padding = 40;
 
@@ -7199,7 +7200,7 @@ function scatterplot2(){
             
 
         var yLabel = svg.append("text")
-            .attr("class", "x-axis-label")
+            // .attr("class", "x-axis-label")
             .attr("x", w / 2)
             .attr("y", -40)
             .attr("font-size", "40px")
@@ -7209,7 +7210,7 @@ function scatterplot2(){
 
 
         var yLabel2 = svg.append("text")
-            .attr("class", "x-axis-label")
+            .attr("class", "axis-label")
             .attr("x", w / 2)
             .attr("y", 450)
             .attr("font-size", "20px")
@@ -7217,9 +7218,9 @@ function scatterplot2(){
             .text("3PM");
 
         var xlabel = svg.append("text")
-            .attr("class", "y-axis-label")
+            .attr("class", "axis-label")
             .attr("x", - (h / 2))
-            .attr("y", -60)
+            .attr("y", -40)
             .attr("font-size", "20px")
             .attr("text-anchor", "middle")
             .attr("transform", "rotate(-90)")
@@ -7245,8 +7246,8 @@ function scatterplot2(){
             .attr("xlink:href", function (d) {
                 return teamColors[d.teamName];
             })
-            .attr("width", 45)
-            .attr("height", 45)
+            .attr("width", 55)
+            .attr("height", 55)
             .attr("class","nba-scatter")
 
 

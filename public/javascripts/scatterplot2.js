@@ -2,10 +2,10 @@ import NBA from 'nba';
 
 function scatterplot2(){
 //width and height
-    var margin = { left: 80, right: 10, top: 150, bottom: 120 };
+    var margin = { left: 85, right: 20, top: 140, bottom: 140 };
 
     var h = 680- margin.top - margin.bottom;
-    var w = 910 - margin.left - margin.right;
+    var w = 980 - margin.left - margin.right;
 
     var padding = 40;
 
@@ -89,7 +89,7 @@ function scatterplot2(){
             
 
         var yLabel = svg.append("text")
-            .attr("class", "x-axis-label")
+            // .attr("class", "x-axis-label")
             .attr("x", w / 2)
             .attr("y", -40)
             .attr("font-size", "40px")
@@ -99,7 +99,7 @@ function scatterplot2(){
 
 
         var yLabel2 = svg.append("text")
-            .attr("class", "x-axis-label")
+            .attr("class", "axis-label")
             .attr("x", w / 2)
             .attr("y", 450)
             .attr("font-size", "20px")
@@ -107,9 +107,9 @@ function scatterplot2(){
             .text("3PM");
 
         var xlabel = svg.append("text")
-            .attr("class", "y-axis-label")
+            .attr("class", "axis-label")
             .attr("x", - (h / 2))
-            .attr("y", -60)
+            .attr("y", -40)
             .attr("font-size", "20px")
             .attr("text-anchor", "middle")
             .attr("transform", "rotate(-90)")
@@ -135,8 +135,8 @@ function scatterplot2(){
             .attr("xlink:href", function (d) {
                 return teamColors[d.teamName];
             })
-            .attr("width", 45)
-            .attr("height", 45)
+            .attr("width", 55)
+            .attr("height", 55)
             .attr("class","nba-scatter")
 
 
