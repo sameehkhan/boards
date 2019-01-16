@@ -53,7 +53,7 @@ This project will be implemented with the following technologies:
 
 - [ ] If storing data locally, format in JSON 
 
-- [ ] If using data from an API, create and setup Node backend, and test for responses
+- [ ] If using data from an API, create and setup Node backend, and test for responses 
 
 **Day 3:** 
 - [ ] Familarize with D3 documentation, and learn how to read data in D3
@@ -70,7 +70,7 @@ Goals for the day:
 **Day 6:** 
 - [ ] Continue Styling
 - [ ] Touching up. Adding GitHub and LinkedIn icons. Styling. Any user experience enhancements
-
+ 
 **Day 7:** 
 - [ ] Site deployment to sameehkhan.com
 
