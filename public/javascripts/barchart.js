@@ -56,13 +56,13 @@ function barchart() {
         .attr("class", "bar-domain")
         .attr("transform", "translate(0," + height + ")")
         .attr('font-size', '20px')
-        .attr("stroke-width", '1.5');
+        .attr("stroke-width", '1');
 
 
 
     var yAxisGroup = g.append("g")
         .attr("class", "y-axis")
-        .attr("stroke-width", '1.5');
+        .attr("stroke-width", '1');
 
 
     // xScale

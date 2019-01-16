@@ -145,14 +145,14 @@ function scatterplot2(){
             .attr("class", "x-axis2")
             .attr("transform", "translate(0," + (h - padding) + ")")
             .call(xAxis)
-            .attr("stroke-width", '1.5');
+            .attr("stroke-width", '1');
 
 
         svg.append("g")
             .attr("class", "y-axis2")
             .attr("transform", "translate(" + padding +", 0)")
             .call(yAxis)
-            .attr("stroke-width", '1.5');
+            .attr("stroke-width", '1');
 
 
     });

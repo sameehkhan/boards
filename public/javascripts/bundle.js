@@ -6743,13 +6743,13 @@ function barchart() {
         .attr("class", "bar-domain")
         .attr("transform", "translate(0," + height + ")")
         .attr('font-size', '20px')
-        .attr("stroke-width", '1.5');
+        .attr("stroke-width", '1');
 
 
 
     var yAxisGroup = g.append("g")
         .attr("class", "y-axis")
-        .attr("stroke-width", '1.5');
+        .attr("stroke-width", '1');
 
 
     // xScale
@@ -7256,14 +7256,14 @@ function scatterplot2(){
             .attr("class", "x-axis2")
             .attr("transform", "translate(0," + (h - padding) + ")")
             .call(xAxis)
-            .attr("stroke-width", '1.5');
+            .attr("stroke-width", '1');
 
 
         svg.append("g")
             .attr("class", "y-axis2")
             .attr("transform", "translate(" + padding +", 0)")
             .call(yAxis)
-            .attr("stroke-width", '1.5');
+            .attr("stroke-width", '1');
 
 
     });
